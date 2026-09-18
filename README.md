@@ -1,38 +1,41 @@
 # SentinelX
 
-A research sandbox for comparing three network anomaly-detection approaches on a simulated corporate network: traffic-only, context-aware, and risk-informed detection.
+A research-oriented network anomaly detection sandbox for comparing **traffic-only, context-aware, and risk-informed** detection approaches on a simulated enterprise network.
 
-## Why SentinelX Exists
+## The Question
 
-The project tests a practical hypothesis: raw traffic statistics are useful for obvious volumetric attacks, but identity, VLAN segmentation, destination familiarity, behavioral history, and asset criticality can expose threats that look normal at the packet level.
+Can network anomaly detection become more useful when traffic behaviour is combined with context such as device identity, VLAN, role, destination familiarity, and asset criticality?
 
-## Features
-
-- Live simulated network topology
-- Multiple VLANs and device roles
-- Three detection engines running against the same flow
-- DoS, port-scan, privilege-abuse, rogue-IoT, and exfiltration scenarios
-- Flow inspector with feature and policy explanations
-- Precision, recall, F1, false-positive, and workload metrics
-- Research Mode for comparing engines over time
+SentinelX is built to explore that question.
 
 ## Detection Engines
 
-| Engine | Main signal | Strength |
+| Approach | Signals | Main purpose |
 |---|---|---|
-| Traffic-Only | Isolation Forest on traffic features | Volumetric anomalies |
-| Context-Aware | Traffic + device/network context | Policy and behavioral anomalies |
-| Risk-Informed | Traffic + context + criticality | Operational prioritization |
+| Traffic-Only | Network traffic features | Detect statistical anomalies |
+| Context-Aware | Traffic + network context | Detect policy and behavioural anomalies |
+| Risk-Informed | Traffic + context + criticality | Prioritize operational response |
+
+## Features
+
+- Simulated enterprise network topology
+- Multiple VLANs and device roles
+- Shared flows for model comparison
+- DoS and port-scan scenarios
+- Rogue-IoT and exfiltration scenarios
+- Flow inspection and explanations
+- Precision, recall, F1 and false-positive metrics
+- Research Mode for comparative experiments
 
 ## Technology
 
-- Python 3.10+
+- Python
 - Flask
 - scikit-learn
-- HTML/CSS/JavaScript
-- Chart.js for dashboard visualizations
+- HTML / CSS / JavaScript
+- Chart.js
 
-## Getting Started
+## Run Locally
 
 ```bash
 git clone https://github.com/majordevbhargav/sentinelx.git
@@ -43,47 +46,29 @@ python3 app.py
 
 Open `http://127.0.0.1:5000`.
 
-## Project Structure
+## Research Note
 
-```text
-app.py
-requirements.txt
-static/
-├── index.html
-├── styles.css
-└── app.js
-```
+The traffic and attack data are simulated. The metrics are useful for comparing behaviour inside the simulator but should not be interpreted as evidence of real-world detection accuracy.
 
-## API
+## Learning Path
 
-| Endpoint | Method | Purpose |
-|---|---|---|
-| `/api/status` | GET | Current simulation state |
-| `/api/config` | POST | Update simulation settings |
-| `/api/flows` | GET | Recent scored flows |
-| `/api/devices` | GET | Simulated devices and risk |
-| `/api/metrics` | GET | Detection performance metrics |
+SentinelX helped me move from:
 
-## Research Notes
+**Network concepts → Python → machine learning → security context → measurable detection experiments**
 
-The dataset is simulated and the models are prototypes. Performance metrics demonstrate comparative behavior within the simulator and should not be treated as evidence of real-world detection accuracy.
+It also became the conceptual foundation for later projects such as FlowWatch and Cisco-XDR.
 
 ## Future Direction
 
-- Real NetFlow/IPFIX ingestion
+- Real NetFlow / IPFIX ingestion
 - Persistent telemetry
-- More attack and policy scenarios
+- More realistic network baselines
 - Explainable scoring reports
 - Integration with FlowWatch
 - Controlled response workflows
-
-## License
-
-MIT
 
 ## Author
 
 **Dev Bhargav**
 
-- GitHub: https://github.com/majordevbhargav
-- LinkedIn: https://www.linkedin.com/in/devbhargav100
+[GitHub](https://github.com/majordevbhargav) · [LinkedIn](https://www.linkedin.com/in/devbhargav100)
